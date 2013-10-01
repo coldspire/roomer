@@ -5,12 +5,10 @@ namespace Roomer
     public class Exit
     {
         //// ID of the starting/source Room
-        private string roomIDSource;
-        
+        private string roomIDSource;        
         //// ID of the destination Room, i.e. where this Exit will take the PC
         private string roomIDDest;
         
-        //// Describes this exit/transition to the PC
-        private string description;
+        public Description Description;
     }
 }

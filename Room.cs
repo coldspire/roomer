@@ -8,11 +8,7 @@ namespace Roomer
         // A unique ID for this Room.
         private string id;
         
-        // A longer, detailed description of this Room.
-        private string descriptionDetail;
-        
-        // A short description of this Room.
-        private string descriptionSimple;
+        public Description Description;
         
         // Indicates whether the PC has previously visited this Room.
         private bool visitedPreviously;
