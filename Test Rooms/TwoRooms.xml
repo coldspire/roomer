@@ -19,6 +19,31 @@
                     Looking more closely, a soft light hints at the edges of another room within the nearly-flawless void.
                 </description>
             </Exit>
+            <Exit>
+                <roomIDSource>whiteRoom</roomIDSource>
+                <roomIDDest>whiteRoomCurtains</roomIDDest>
+                <description>
+                    You may move to over by the curtains.
+                </description>
+            </Exit>
+        </exits>
+    </Room>
+    <Room>
+        <id>whiteRoomCurtains</id>
+        <descriptionDetail>
+            The curtains are black and soft.
+        </descriptionDetail>
+        <descriptionSimple>
+            The curtains are black.
+        </descriptionSimple>
+        <exits>
+            <Exit>
+                <roomIDSource>whiteRoomCurtains</roomIDSource>
+                <roomIDDest>whiteRoom</roomIDDest>
+                <description>
+                    You may move back into the center of the white room.
+                </description>
+            </Exit>
         </exits>
     </Room>
     <Room>
@@ -55,7 +80,7 @@
             Beyond the glass is a grassy plain with low rolling hills that extend to the horizon. The tall grass sways and bends beneath a light breeze, a wind unfelt to you within the sealed room.
             The sky is overcast, a grey blanket. On the horizon a thin rain curtain moves slowly across your view.
             Based on the intensity of the light outside, it could be either dusk or dawn.
-            A solitary, far-distant object catches your eye: a single, inactive wind turbine. 
+            Some activity in the distance catches your eye: someone is slowly walking across the plain. Based on their meandering they appear to be looking for something within the waist-high grass.
         </descriptionDetail>
         <descriptionSimple>
             Sealed window with view of grassy plain.
