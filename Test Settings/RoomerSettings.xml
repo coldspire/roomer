@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
 <RoomerSettings>
     <PathSchemas>Schemas</PathSchemas>
+    <RoomsXsdFilename>RoomsSchema.xsd</RoomsXsdFilename>
+    <TypesXsdFilename>RoomsTypes.xsd</TypesXsdFilename>
 </RoomerSettings>
