@@ -1,10 +1,11 @@
-
+using System.Collections.Generic;
 
 namespace Roomer
 {
     public class RoomerManager
     {
-        private static RoomerSettings roomerSettings;        
+        private static RoomerSettings roomerSettings;
+
 
         private Dictionary<string, Room> rooms;
         public Dictionary<string, Room> Rooms
@@ -15,15 +16,15 @@ namespace Roomer
         
         public int NumberOfRooms
         {
-            get { return Rooms ? Rooms.Count : 0; }
+            get { return Rooms != null ? Rooms.Count : 0; }
         }
+
+        private string roomIdStart; 
         
         public Room StartingRoom
         {
-            get { return !roomIdStart.IsNullOrEmpty && Rooms ? Rooms[roomIdStart] : null; }
+            get { return roomIdStart != "" && Rooms != null ? Rooms[roomIdStart] : null; }
         }
-        
-        private string roomIdStart;
 
         public RoomerManager()
         {

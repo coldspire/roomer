@@ -61,9 +61,6 @@
     <Compile Include="..\..\RoomIO.cs">
       <Link>RoomIO.cs</Link>
     </Compile>
-    <Compile Include="..\..\Rooms.cs">
-      <Link>Objects\Rooms.cs</Link>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
