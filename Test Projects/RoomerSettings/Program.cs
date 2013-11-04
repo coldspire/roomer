@@ -8,7 +8,7 @@ namespace RoomerSettingsTest
 {
     class Program
     {
-        private Roomer.RoomerSettings roomerSettings;
+        private RoomerSettings roomerSettings;
 
         private void Go()
         {

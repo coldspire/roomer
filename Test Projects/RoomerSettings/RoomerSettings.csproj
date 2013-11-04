@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="..\..\Test Settings\RoomerSettings.xml">
       <Link>RoomerSettings.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
