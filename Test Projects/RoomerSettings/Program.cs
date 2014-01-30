@@ -12,9 +12,12 @@ namespace RoomerSettingsTest
 
         private void Go()
         {
-            bool loadWasSuccessful;
+            roomerSettings = new RoomerSettings();
 
-            loadWasSuccessful = RoomIO.LoadRoomerSettings(out roomerSettings);
+            if (roomerSettings.InitSuccessful)
+            {
+                
+            }
         }
 
         static void Main(string[] args)

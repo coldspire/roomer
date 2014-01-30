@@ -24,7 +24,7 @@ namespace Roomer
             
             // 2. Validate the file against the Rooms schemas.
             XmlSchemaSet schemas = new XmlSchemaSet();
-            schemas.Add("", Path.Combine(roomerSettings.PathSchemas, roomerSettings.RoomsXsdFilename));
+            schemas.Add("", Path.Combine(roomerSettings.GetSett("PathSchemas"), roomerSettings.GetSett("RoomsXsdFilename")));
 
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.ValidationType = ValidationType.Schema;
@@ -50,26 +50,6 @@ namespace Roomer
             // TODO: everything else
             
             return (loadWasSuccessful);
-        }
-
-        public static bool LoadRoomerSettings(out RoomerSettings roomerSettings)
-        {
-            roomerSettings = new RoomerSettings();
-
-            if (!File.Exists(RoomerSettings.SettingsPath))
-            {
-                return (false);
-            }
-
-            using (FileStream fs = new FileStream(RoomerSettings.SettingsPath, FileMode.Open))
-            {
-                XmlReader xmlReader = XmlReader.Create(fs);
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(RoomerSettings));
-
-                roomerSettings = (RoomerSettings)xmlSerializer.Deserialize(xmlReader);
-            }
-
-            return (true);
         }
 
     }
