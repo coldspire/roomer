@@ -11,7 +11,8 @@
 						<xs:element name="Exit" type="Exit" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
-			</xs:element>
+			</xs:element>            
+			<xs:element name="isStartingRoom" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="Exit">
