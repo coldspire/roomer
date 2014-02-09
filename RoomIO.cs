@@ -37,8 +37,10 @@ namespace Roomer
 
         public static IOErrCode IsValidRoomsFile(string RoomsFilePath, RoomerSettings roomerSettings)
         {
+            // TODO: Would be good to pass more information back to the caller regarding any errors.
+            // E.g. if the schema is invalid, what does XDocument.Validate say was wrong?
+
             XmlSchemaSet roomsSchemas;
-            XmlReader roomsReader;
             XDocument roomsDoc;
 
             //// 1. Check that the file can be accessed and exists.
@@ -49,21 +51,28 @@ namespace Roomer
 
             //// Some setup for checking the XML doc against schemas
 
-            string schemaPath = Path.Combine(roomerSettings.GetSett("PathSchemas"), roomerSettings.GetSett("RoomsXsdFilename"));
-            
+            string schemaPath = Path.Combine(roomerSettings.GetSett("PathSchemas"), roomerSettings.GetSett("RoomsXsdFilename"));            
             roomsSchemas = new XmlSchemaSet();
             roomsSchemas.Add("", schemaPath);
-
-            roomsReader = XmlReader.Create(RoomsFilePath);
             
             //// 2. Validate the file against the Rooms schemas.
-            if (!roomsReader.Read())
+            bool foundValidErrs = false;
+            try
+            {
+                XDocument temp = XDocument.Load(RoomsFilePath);
+            }
+            catch (System.Xml.XmlException)
+            {
+                foundValidErrs = true;            
+            }
+
+            if (foundValidErrs)
             {
                 return (IOErrCode.RoomFileNotXMLValid);
             }
 
             //// Now that our XML file is valid, store it off.
-            roomsDoc = XDocument.Load(roomsReader);
+            roomsDoc = XDocument.Load(RoomsFilePath);
 
             //// 3. Check that all rooms use a unique ID
             IEnumerable<string> roomIds = roomsDoc.Root.Descendants("id").Select(e => e.Value);
