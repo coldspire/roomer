@@ -6,7 +6,6 @@ namespace Roomer
     {
         private static RoomerSettings roomerSettings;
 
-
         private Dictionary<string, Room> rooms;
         public Dictionary<string, Room> Rooms
         {
@@ -19,21 +18,25 @@ namespace Roomer
             get { return Rooms != null ? Rooms.Count : 0; }
         }
 
-        private string roomIdStart; 
-        
+        private string roomIdStart;
         public Room StartingRoom
         {
             get { return roomIdStart != "" && Rooms != null ? Rooms[roomIdStart] : null; }
         }
 
-        public RoomerManager()
+        public RoomerManager(string RoomFilePath)
         {
-            roomerSettings = new RoomerSettings();            
-            RoomIO.LoadRoomerSettings(out roomerSettings);
+            roomerSettings = new RoomerSettings();
 
-            if (RoomIO.IsValidRoomsFile(@"RoomFiles\TwoRooms.xml", roomerSettings))
+            RoomIO.IOErrCode errorCode = RoomIO.IsValidRoomsFile(RoomFilePath, roomerSettings);
+            if (errorCode == RoomIO.IOErrCode.NoError)
             {
-
+                // TODO: Load rooms from file
+                // TODO: Put the player in the starting room and start playing!
+            }
+            else
+            {
+                // TODO: Output error debug information.
             }
         }
     }
