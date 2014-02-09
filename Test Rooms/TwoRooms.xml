@@ -27,6 +27,7 @@
                 </description>
             </Exit>
         </exits>
+        <isStartingRoom>true</isStartingRoom>
     </Room>
     <Room>
         <id>whiteRoomCurtains</id>

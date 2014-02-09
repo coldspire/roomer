@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Rooms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Room>
+        <id>room</id>
+        <descriptionDetail>
+            This is Room A.
+        </descriptionDetail>
+        <descriptionSimple>
+            Room A.
+        </descriptionSimple>
+        <exits>
+            <Exit>
+                <roomIDSource>roomA</roomIDSource>
+                <roomIDDest>roomB</roomIDDest>
+                <description>
+                   Exit to Room B.
+                </description>
+            </Exit>
+        </exits>        
+    </Room>
+    <Room>
+        <id>room</id>
+        <descriptionDetail>
+            This is Room B.
+        </descriptionDetail>
+        <descriptionSimple>
+            Room B.
+        </descriptionSimple>
+        <exits>
+            <Exit>
+                <roomIDSource>roomB</roomIDSource>
+                <roomIDDest>roomA</roomIDDest>
+                <description>
+                   Exit to Room A.
+                </description>
+            </Exit>
+        </exits>
+    </Room>
+</Rooms>
