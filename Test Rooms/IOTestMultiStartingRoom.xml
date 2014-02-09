@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Rooms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Room>
-        <id>room</id>
+        <id>roomA</id>
         <descriptionDetail>
             This is Room A.
         </descriptionDetail>
@@ -20,7 +20,7 @@
         <isStartingRoom>true</isStartingRoom>
     </Room>
     <Room>
-        <id>room</id>
+        <id>roomB</id>
         <descriptionDetail>
             This is Room B.
         </descriptionDetail>
