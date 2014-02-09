@@ -75,10 +75,25 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="RoomerSettings.roomer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\Test Settings\RoomerSettings.xml">
-      <Link>RoomerSettings.xml</Link>
+    <Content Include="..\..\Test Rooms\IOTestInvalidXML.xml">
+      <Link>RoomFiles\IOTestInvalidXML.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Test Rooms\IOTestMultiStartingRoom.xml">
+      <Link>RoomFiles\IOTestMultiStartingRoom.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Test Rooms\IOTestNoStartingRoom.xml">
+      <Link>RoomFiles\IOTestNoStartingRoom.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\Test Rooms\IOTestNotUniqueIDs.xml">
+      <Link>RoomFiles\IOTestNotUniqueIDs.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="RoomFiles\TwoRooms.xml">

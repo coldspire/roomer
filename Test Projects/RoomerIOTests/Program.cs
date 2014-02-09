@@ -12,7 +12,12 @@ namespace RoomerIOTests
 
         public void Go()
         {
-            roomerManger = new RoomerManager();
+            Console.Write("Path to rooms file: ");
+            string filePath = Console.ReadLine();
+            filePath = filePath.Replace('/', System.IO.Path.DirectorySeparatorChar);
+            filePath = filePath.Replace('\\', System.IO.Path.DirectorySeparatorChar);
+
+            roomerManger = new RoomerManager(filePath);
         }
 
         static void Main(string[] args)
