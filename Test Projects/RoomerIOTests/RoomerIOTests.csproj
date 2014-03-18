@@ -75,7 +75,8 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="RoomerSettings.roomer">
+    <None Include="..\..\Test Settings\RoomerSettings.roomer">
+      <Link>RoomerSettings.roomer</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -96,7 +97,8 @@
       <Link>RoomFiles\IOTestNotUniqueIDs.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="RoomFiles\TwoRooms.xml">
+    <Content Include="..\..\Test Rooms\TwoRoomsV2.xml">
+      <Link>RoomFiles\TwoRoomsV2.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
