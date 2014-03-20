@@ -4,26 +4,27 @@ namespace Roomer
     // A common container to store descriptions for objects.
     public class Description
     {
-        private const string noDesc = "No description.";
-    
-        private string detailed = noDesc;
-        public string Detailed
+        const string noDesc = "No description.";
+
+        public string Simple { get; private set; }
+        public string Detailed { get; private set; }
+
+        public Description() 
         {
-            private set { detailed = value; }
-            get { return detailed; }
+            Detailed = noDesc;
+            Simple = noDesc;
         }
-        
-        private string simple = noDesc;
-        public string Simple
-        {
-            private set { simple = value; }
-            get { return simple; }
-        }
-        
-        public Description(string setDetailed, string setSimple)
+
+        public Description(string setSimple, string setDetailed)
         {
             Detailed = setDetailed;
             Simple = setSimple;
         }
+
+        public Description(Description newDescription)
+        {
+            Detailed = newDescription.Detailed;
+            Simple = newDescription.Simple;
+        }        
     }
 }
