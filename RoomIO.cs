@@ -104,19 +104,18 @@ namespace Roomer
             return (IOErrCode.NoError);
         }
         
-        public static bool LoadRoomsFromFile(Dictionary<string, Room> outRooms, string RoomsFilePath)
+        public static Dictionary<string, Room> LoadRoomsFromFile(string RoomsFilePath)
         {
-            outRooms = new Dictionary<string, Room>();
 
             XElement roomsFile;
             roomsFile = XElement.Load(RoomsFilePath);
 
             if (roomsFile == null)
             {
-                // outRooms returns as an empty Dictionary
-                return false;
+                return (null);
             }
 
+            Dictionary<string, Room> outRooms = new Dictionary<string, Room>();
             bool loadWasSuccessful = true; // Will change to false as soon as an error is found
 
             foreach (XElement roomElem in roomsFile.Descendants("Room"))
@@ -189,7 +188,7 @@ namespace Roomer
                 }
             }
             
-            return (loadWasSuccessful);
+            return (outRooms);
         }
 
     }

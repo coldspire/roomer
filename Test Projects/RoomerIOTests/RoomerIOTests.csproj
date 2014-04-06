@@ -52,14 +52,14 @@
     <Compile Include="..\..\Room.cs">
       <Link>Objects\Room.cs</Link>
     </Compile>
-    <Compile Include="..\..\RoomerManger.cs">
-      <Link>Objects\RoomerManger.cs</Link>
-    </Compile>
     <Compile Include="..\..\RoomerSettings.cs">
       <Link>Objects\RoomerSettings.cs</Link>
     </Compile>
     <Compile Include="..\..\RoomIO.cs">
       <Link>Methods\RoomIO.cs</Link>
+    </Compile>
+    <Compile Include="..\..\RoomKeeper.cs">
+      <Link>Objects\RoomKeeper.cs</Link>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,8 +97,8 @@
       <Link>RoomFiles\IOTestNotUniqueIDs.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\Test Rooms\TwoRoomsV2.xml">
-      <Link>RoomFiles\TwoRoomsV2.xml</Link>
+    <Content Include="..\..\Test Rooms\TwoRooms.xml">
+      <Link>RoomFiles\TwoRooms.xml</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

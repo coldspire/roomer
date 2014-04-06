@@ -8,7 +8,7 @@ namespace RoomerIOTests
 {
     class Program
     {
-        public RoomerManager roomerManger;
+        public RoomKeeper roomKeeper;
 
         public void Go()
         {
@@ -17,7 +17,7 @@ namespace RoomerIOTests
             filePath = filePath.Replace('/', System.IO.Path.DirectorySeparatorChar);
             filePath = filePath.Replace('\\', System.IO.Path.DirectorySeparatorChar);
 
-            roomerManger = new RoomerManager(filePath);
+            roomKeeper = new RoomKeeper(filePath);            
         }
 
         static void Main(string[] args)

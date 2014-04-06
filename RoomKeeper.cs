@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace Roomer
 {
-    public class RoomerManager
+    public class RoomKeeper
     {
         private static RoomerSettings roomerSettings;
 
-        private Dictionary<string, Room> rooms;
+        private Dictionary<string, Room> rooms = new Dictionary<string, Room>();
         public Dictionary<string, Room> Rooms
         {
             get { return rooms; }
@@ -21,18 +21,17 @@ namespace Roomer
         private string roomIdStart;
         public Room StartingRoom
         {
-            get { return roomIdStart != "" && Rooms != null ? Rooms[roomIdStart] : null; }
+            get { return (roomIdStart != "" && Rooms != null) ? Rooms[roomIdStart] : null; }
         }
 
-        public RoomerManager(string RoomFilePath)
+        public RoomKeeper(string RoomFilePath)
         {
             roomerSettings = new RoomerSettings();
 
             RoomIO.IOErrCode errorCode = RoomIO.IsValidRoomsFile(RoomFilePath, roomerSettings);
             if (errorCode == RoomIO.IOErrCode.NoError)
             {
-                // TODO: Load rooms from file
-                // TODO: Put the player in the starting room and start playing!
+                Rooms = RoomIO.LoadRoomsFromFile(RoomFilePath);
             }
             else
             {
