@@ -36,7 +36,7 @@ namespace Roomer
                 fullPath = Path.Combine(fullPath, part);
             }
 
-            if (Directory.Exists(fullPath))
+            if (File.Exists(fullPath) || Directory.Exists(fullPath))
             {
                 return (fullPath);
             }
@@ -106,7 +106,6 @@ namespace Roomer
         
         public static Dictionary<string, Room> LoadRoomsFromFile(string RoomsFilePath)
         {
-
             XElement roomsFile;
             roomsFile = XElement.Load(RoomsFilePath);
 

@@ -14,10 +14,7 @@ namespace RoomerIOTests
         {
             Console.Write("Path to rooms file: ");
             string filePath = Console.ReadLine();
-            filePath = filePath.Replace('/', System.IO.Path.DirectorySeparatorChar);
-            filePath = filePath.Replace('\\', System.IO.Path.DirectorySeparatorChar);
-
-            roomKeeper = new RoomKeeper(filePath);            
+            roomKeeper = new RoomKeeper(RoomIO.MakePath(filePath.Split('\\', '/')));
         }
 
         static void Main(string[] args)
