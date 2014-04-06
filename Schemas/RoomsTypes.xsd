@@ -3,14 +3,15 @@
 	<xs:complexType name="Room">
 		<xs:sequence>
 			<xs:element name="id" type="xs:string"/>
-            <xs:element name="Description" type="Description"/>
+            <xs:element name="description" type="description"/>
 			<xs:element name="exits" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Exit" type="Exit" maxOccurs="unbounded"/>
+						<xs:element name="exit" type="exit" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
-			</xs:element>
+			</xs:element>             
+            <xs:element name="visited" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="isStartingRoom" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
