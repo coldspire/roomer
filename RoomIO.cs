@@ -8,6 +8,10 @@ using System.Xml.Schema;
 
 namespace Roomer
 {
+    /// <summary>
+    /// Methods and enums for roomer IO. 
+    /// No fields/properties or saved state.
+    /// </summary>
     public static class RoomIO
     {
         public enum IOErrCode
@@ -24,17 +28,23 @@ namespace Roomer
 
         }
 
-        public static string MakePath(string Dir, string Fname)
+        public static string MakePath(params string[] pathParts)
         {
-            string path = Path.Combine(Dir, Fname);
-            if (Directory.Exists(path))
+            string fullPath = "";
+            foreach (string part in pathParts)
             {
-                return (path);
+                fullPath = Path.Combine(fullPath, part);
+            }
+
+            if (Directory.Exists(fullPath))
+            {
+                return (fullPath);
             }
 
             return null;
         }
 
+        // TODO: Move this to a RoomerValidator class
         public static IOErrCode IsValidRoomsFile(string RoomsFilePath, RoomerSettings roomerSettings)
         {
             // TODO: Would be good to pass more information back to the caller regarding any errors.
@@ -57,6 +67,9 @@ namespace Roomer
             
             //// 2. Validate the file against the Rooms schemas.
             bool foundValidErrs = false;
+
+            // TODO: Is this a good way to check if a schema is invalid? By using an exception? Nope.
+            // Probably should be in a method. And not use an exception
             try
             {
                 XDocument temp = XDocument.Load(RoomsFilePath);
@@ -93,12 +106,88 @@ namespace Roomer
         
         public static bool LoadRoomsFromFile(Dictionary<string, Room> outRooms, string RoomsFilePath)
         {
-            bool loadWasSuccessful;
-            
-            loadWasSuccessful = true;
             outRooms = new Dictionary<string, Room>();
-            
-            // TODO: everything else
+
+            XElement roomsFile;
+            roomsFile = XElement.Load(RoomsFilePath);
+
+            if (roomsFile == null)
+            {
+                // outRooms returns as an empty Dictionary
+                return false;
+            }
+
+            bool loadWasSuccessful = true; // Will change to false as soon as an error is found
+
+            foreach (XElement roomElem in roomsFile.Descendants("Room"))
+            {
+                string id;
+                id = roomElem.Element("id").Value;
+
+                // TODO: Can this be condensed? There's a lot of checking for null elements.
+                // Maybe an extension method that either returns a blank string or the value of the needed descendent would work?
+                string descriptionSimple = "";
+                string descriptionDetail = "";
+                if (roomElem.Element("description") != null)
+                {
+                    if (roomElem.Element("description").Element("simple") != null)
+                    {
+                        descriptionSimple = roomElem.Element("description").Element("simple").Value;
+                    }
+
+                    if (roomElem.Element("description").Element("detailed") != null)
+                    {
+                        descriptionDetail = roomElem.Element("description").Element("detailed").Value;
+                    }
+                }
+
+                bool visited;
+                visited = (roomElem.Element("visited") != null);
+
+                List<Exit> exitsForRoom = new List<Exit>();
+
+                // TODO: This has the same problem that the description does. There's a lot of checking for null elements.
+                if (roomElem.Element("exits") != null)
+                {
+                    foreach (XElement exitElem in roomElem.Element("exits").Elements("exit"))
+                    {
+                        string sourceId = exitElem.Element("roomIDSource").Value;
+                        string destId = exitElem.Element("roomIDDest").Value;
+
+                        // TODO: And here's that same description issue again with the elements...
+                        string descriptionExitSimple = "";
+                        string descriptionExitDetail = "";
+                        if (exitElem.Element("description") != null)
+                        {
+                            if (exitElem.Element("description").Element("simple") != null)
+                            {
+                                descriptionExitSimple = exitElem.Element("description").Element("simple").Value;
+                            }
+
+                            if (exitElem.Element("description").Element("detailed") != null)
+                            {
+                                descriptionExitDetail = exitElem.Element("description").Element("detailed").Value;
+                            }
+                        }
+
+                        exitsForRoom.Add(new Exit(sourceId, destId, new Description(descriptionExitSimple, descriptionExitDetail)));
+                    }
+                }
+
+                // TODO: FindRoomErrors
+                // if (FindRoomErrors() == errors)
+                // {
+                //   loadWasSuccessful = false;
+                //   log_errors();
+                // }
+
+                outRooms.Add(id, new Room(id, new Description(descriptionSimple, descriptionDetail), exitsForRoom, visited));
+
+                if (!loadWasSuccessful)
+                {
+                    break;
+                }
+            }
             
             return (loadWasSuccessful);
         }
