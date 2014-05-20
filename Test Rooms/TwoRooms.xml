@@ -13,7 +13,7 @@
             </detailed>
         </description>
         <exits>
-            <Exit>
+            <exit>
                 <roomIDSource>whiteRoom</roomIDSource>
                 <roomIDDest>blackRoom</roomIDDest>
                 <description>
@@ -22,8 +22,8 @@
                         Looking more closely, a soft light hints at the edges of another room within the nearly-flawless void.
                     </simple>
                 </description>
-            </Exit>
-            <Exit>
+            </exit>
+            <exit>
                 <roomIDSource>whiteRoom</roomIDSource>
                 <roomIDDest>whiteRoomCurtains</roomIDDest>
                 <description>
@@ -31,7 +31,7 @@
                         You may move to over by the curtains.
                     </simple>
                 </description>
-            </Exit>
+            </exit>
         </exits>
         <isStartingRoom>true</isStartingRoom>
     </Room>
@@ -43,7 +43,7 @@
             </simple>
         </description>
         <exits>
-            <Exit>
+            <exit>
                 <roomIDSource>whiteRoomCurtains</roomIDSource>
                 <roomIDDest>whiteRoom</roomIDDest>
                 <description>
@@ -51,7 +51,7 @@
                         You may move back into the center of the white room.
                     </simple>
                 </description>
-            </Exit>
+            </exit>
         </exits>
     </Room>
     <Room>
@@ -67,7 +67,7 @@
             </detailed>
         </description>        
         <exits>
-            <Exit>
+            <exit>
                 <roomIDSource>blackRoom</roomIDSource>
                 <roomIDDest>whiteRoom</roomIDDest>
                 <description>
@@ -75,8 +75,8 @@
                         One side of the room has a short grey hallway leading into a stark-white room.
                     </simple>
                 </description>
-            </Exit>
-            <Exit>
+            </exit>
+            <exit>
                 <roomIDSource>blackRoom</roomIDSource>
                 <roomIDDest>blackRoomWindow</roomIDDest>
                 <description>
@@ -84,7 +84,7 @@
                         You may move over to the window.
                     </simple>
                 </description>
-            </Exit>
+            </exit>
         </exits>
     </Room>
     <Room>
@@ -102,7 +102,7 @@
             </detailed>
         </description>
         <exits>
-            <Exit>
+            <exit>
                 <roomIDSource>blackRoomWindow</roomIDSource>
                 <roomIDDest>blackRoom</roomIDDest>
                 <description>
@@ -110,7 +110,7 @@
                         You may move away from the window, back into the black room.
                     </simple>
                 </description>
-            </Exit>
+            </exit>
         </exits>
     </Room>
 </Rooms>
