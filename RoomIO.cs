@@ -177,7 +177,16 @@ namespace Roomer
                 //   log_errors();
                 // }
 
-                outRooms.Add(id, new Room(id, new Description(descriptionSimple, descriptionDetail), exitsForRoom, visited));
+                bool isStartingRoom = roomElem.Element("isStartingRoom") != null &&
+                                      roomElem.Element("isStartingRoom").Value == "true";
+
+                Room newRoom = new Room(id, 
+                                        new Description(descriptionSimple, descriptionDetail),
+                                        exitsForRoom, 
+                                        visited,
+                                        isStartingRoom);
+
+                outRooms.Add(id, newRoom);
 
                 if (!loadWasSuccessful)
                 {

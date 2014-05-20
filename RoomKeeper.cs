@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Roomer
 {
@@ -18,10 +19,17 @@ namespace Roomer
             get { return Rooms != null ? Rooms.Count : 0; }
         }
 
-        private string roomIdStart;
+        private string startingRoomId;
+
         public Room StartingRoom
         {
-            get { return (roomIdStart != "" && Rooms != null) ? Rooms[roomIdStart] : null; }
+            get { return (startingRoomId != "" && Rooms != null) ? Rooms[startingRoomId] : null; }
+        }
+
+        private void SetStartingRoomId()
+        {
+            var startingRoom = Rooms.Where(room => room.Value.IsStartingRoom).Single();
+            startingRoomId = startingRoom.Value.Id;
         }
 
         public RoomKeeper(string RoomFilePath)
@@ -32,6 +40,7 @@ namespace Roomer
             if (errorCode == RoomIO.IOErrCode.NoError)
             {
                 Rooms = RoomIO.LoadRoomsFromFile(RoomFilePath);
+                SetStartingRoomId();
             }
             else
             {
